@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     echo "Merging main into master..."
-                    sh """
+                    bat """
                         git config user.email "jenkins@example.com"
                         git config user.name "Jenkins CI/CD"
                         git fetch origin master
