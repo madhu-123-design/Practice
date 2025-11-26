@@ -25,8 +25,8 @@ pipeline {
                             git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
                             cd merge-work
                             git checkout master
-                            git pull origin master
-                            git merge origin/main --no-edit
+                            git fetch origin
+                            git reset --hard origin/main
                             git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
                         """
                     }
