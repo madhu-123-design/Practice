@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Merge main into master') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {               
                script {
