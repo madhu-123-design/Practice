@@ -19,15 +19,31 @@ pipeline {
             }
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')])  {
+                    withCredentials([usernamePassword(credentialsId: 'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                         bat """
+                            REM Clean up old folder
                             rmdir /S /Q merge-work || echo "No folder to delete"
+
+                            REM Clone repository
                             git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
                             cd merge-work
+
+                            REM Configure Git user
+                            git config user.name "jenkins"
+                            git config user.email "jenkins@example.com"
+
+                            REM Checkout master and pull latest changes
                             git checkout master
-                            git fetch origin
-                            git reset --hard origin/main
+                            git pull origin master --rebase
+
+                            REM Fetch main branch and merge into master
+                            git fetch origin main
+                            git merge origin/main
+
+                            REM Push updated master branch
                             git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
+
+
                         """
                     }
                 }
