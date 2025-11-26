@@ -10,7 +10,7 @@ pipeline {
             steps {
                 checkout scm
             }
-        }
+        } 
         stage('Build') {
             steps {
                 echo "Running Maven Build"
@@ -27,7 +27,9 @@ pipeline {
                     bat """
                         git config user.email "jenkins@example.com"
                         git config user.name "Jenkins CI/CD"
-                        git fetch origin master
+                        git fetch origin master            
+                        git reset --hard
+                        git clean -fd
                         git checkout master || git checkout -b master origin/master
                         git pull origin master
                         git merge main --no-edit
