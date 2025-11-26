@@ -32,7 +32,7 @@ pipeline {
                         git checkout master
                         git pull origin master
                         git merge main --no-edit
-                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/your-repo-url.git master
+                        git push https://github.com/madhu-123-design/Practice.git master
                     """
                 }
             }
