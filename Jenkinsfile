@@ -19,7 +19,7 @@ pipeline {
             }
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'github-pat', variable: 'GIT_TOKEN')]) {
+                    withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')])  {
                         bat """
                             rmdir /S /Q merge-work || echo "No folder to delete"
                             git clone https://x-access-token:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
@@ -28,7 +28,7 @@ pipeline {
                             git pull origin master
                             git config merge.ours.driver true
                             git merge -s ours origin/main --no-edit
-                            git push https://x-access-token:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
+                            https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
                         """
                     }
                 }
