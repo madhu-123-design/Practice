@@ -26,7 +26,7 @@ pipeline {
                             cd merge-work
                             git checkout master
                             git pull origin master
-                            git merge -s ours origin/main --no-edit
+                            git merge origin/main --no-edit
                             git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
                         """
                     }
