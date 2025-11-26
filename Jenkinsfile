@@ -30,7 +30,7 @@ withCredentials([usernamePassword(credentialsId: 'jenkins-git-creds', usernameVa
         git checkout master || git checkout -b master origin/master
         git pull origin master
         git merge main --no-edit
-        git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
+        git push https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
     """
 }
                 }
