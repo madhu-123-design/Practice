@@ -19,7 +19,7 @@ pipeline {
             }
             steps {               
                script {
-                    withCredentials([usernamePassword(credentialsId: 'jenkins-git-creds', usernameVariable: 'admin', passwordVariable: 'admin')]) {
+                    withCredentials([usernamePassword(credentialsId: 'jenkins-git-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         echo "Merging main into master..."
                         bat """
                             git config user.email "jenkins@example.com"
