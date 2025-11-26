@@ -21,7 +21,7 @@ pipeline {
                script {
                    
 withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
-    sh """
+    bat """
 
         rm -rf merge-work
         git clone  https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
