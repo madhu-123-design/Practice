@@ -20,7 +20,7 @@ pipeline {
             steps {               
                script {
                    
-withCredentials([string(credentialsId: 'github-pat', variable: 'GIT_TOKEN')]) {
+withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
     bat """
         git config user.email "jenkins@example.com"
         git config user.name "Jenkins CI/CD"
@@ -30,7 +30,7 @@ withCredentials([string(credentialsId: 'github-pat', variable: 'GIT_TOKEN')]) {
         git checkout master || git checkout -b master origin/master
         git pull origin master
         git merge main --no-edit
-        git push https://${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
+        git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
     """
 }
                 }
