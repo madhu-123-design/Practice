@@ -1,10 +1,6 @@
 
 pipeline {
     agent any
-    environment {
-        GIT_USERNAME = 'admin'
-        GIT_PASSWORD = 'admin'
-    }
     stages {
         stage('Checkout') {
             steps {
