@@ -2,9 +2,9 @@
 pipeline {
     agent any
     environment {
-        GIT_CREDENTIALS = 'jenkins-git-creds'   // Jenkins credentials ID
-        GIT_USERNAME = 'your-username'          // Or use withCredentials block
-        GIT_PASSWORD = 'your-token'             // Or use withCredentials block
+        //GIT_CREDENTIALS = 'jenkins-git-creds'   // Jenkins credentials ID
+        GIT_USERNAME = 'admin'          // Or use withCredentials block
+        GIT_PASSWORD = 'admin'             // Or use withCredentials block
     }
     stages {
         stage('Checkout') {
