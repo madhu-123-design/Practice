@@ -2,9 +2,8 @@
 pipeline {
     agent any
     environment {
-        //GIT_CREDENTIALS = 'jenkins-git-creds'   // Jenkins credentials ID
-        GIT_USERNAME = 'admin'          // Or use withCredentials block
-        GIT_PASSWORD = 'admin'             // Or use withCredentials block
+        GIT_USERNAME = 'admin'
+        GIT_PASSWORD = 'admin'
     }
     stages {
         stage('Checkout') {
@@ -20,7 +19,7 @@ pipeline {
         }
         stage('Merge main into master') {
             when {
-                branch 'main'   // Only run when the current branch is main
+                branch 'main'
             }
             steps {
                 script {
@@ -29,10 +28,10 @@ pipeline {
                         git config user.email "jenkins@example.com"
                         git config user.name "Jenkins CI/CD"
                         git fetch origin master
-                        git checkout master
+                        git checkout master || git checkout -b master origin/master
                         git pull origin master
                         git merge main --no-edit
-                        git push https://github.com/madhu-123-design/Practice.git master
+                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/madhu-123-design/Practice.git master
                     """
                 }
             }
