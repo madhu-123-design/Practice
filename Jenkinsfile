@@ -33,7 +33,6 @@ withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 
          git merge -s ours origin/main --no-edit
         git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
     """
-}
                 }
             }
         }
