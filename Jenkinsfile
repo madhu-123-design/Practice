@@ -28,7 +28,7 @@ pipeline {
                             git pull origin master
                             git config merge.ours.driver true
                             git merge -s ours origin/main --no-edit
-                            https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
+                            git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
                         """
                     }
                 }
