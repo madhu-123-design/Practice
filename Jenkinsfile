@@ -19,20 +19,20 @@ pipeline {
             }
             steps {               
                script {
-                    withCredentials([usernamePassword(credentialsId: 'jenkins-git-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                        echo "Merging main into master..."
-                        bat """
-                            git config user.email "jenkins@example.com"
-                            git config user.name "Jenkins CI/CD"
-                            git fetch origin master
-                            git reset --hard
-                            git clean -fd
-                            git checkout master || git checkout -b master origin/master
-                            git pull origin master
-                            git merge main --no-edit
-                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/madhu-123-design/Practice.git master
-                        """
-                    }
+                   
+withCredentials([usernamePassword(credentialsId: 'jenkins-git-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+    bat """
+        git config user.email "jenkins@example.com"
+        git config user.name "Jenkins CI/CD"
+        git fetch origin master
+        git reset --hard
+        git clean -fd
+        git checkout master || git checkout -b master origin/master
+        git pull origin master
+        git merge main --no-edit
+        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/madhu-123-design/Practice.git master
+    """
+}
                 }
             }
         }
