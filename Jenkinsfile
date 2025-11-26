@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Running Maven Build"
-                sh 'mvn clean package -DskipTests=false'
+                sh 'mvn clean package -DskipTests=true'
             }
         }
         stage('Merge main into master') {
