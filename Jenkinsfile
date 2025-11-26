@@ -20,7 +20,7 @@ pipeline {
             steps {               
                script {
                    
-withCredentials([string(credentialsId: 'jenkins-git-creds', variable: 'GIT_TOKEN')]) {
+withCredentials([string(credentialsId: 'github-pat', variable: 'GIT_TOKEN')]) {
     bat """
         git config user.email "jenkins@example.com"
         git config user.name "Jenkins CI/CD"
