@@ -21,14 +21,16 @@ pipeline {
                script {
                    
 withCredentials([usernamePassword(credentialsId:'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
-    bat """
 
-        rm -rf merge-work
-        git clone  https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
-        cd merge-work
+      bat 'rmdir /S /Q merge-work || echo "No folder to delete"' 
+    bat """
+  git clone  https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git merge-work
+   bat"""
+        cd merge-work        
         git checkout master 
         git pull origin master
-        git merge origin/main --no-edit
+    git config merge.ours.driver true
+         git merge -s ours origin/main --no-edit
         git push https://${GIT_USER}:${GIT_TOKEN}@github.com/madhu-123-design/Practice.git master
     """
 }
